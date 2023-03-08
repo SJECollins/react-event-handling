@@ -11,7 +11,7 @@ function App() {
       <EventsClass />
       <EventsFunctional />
       <ConditionalRenderingFunctional connected={true} />
-      <ConditionalRenderingClass />
+      {/* <ConditionalRenderingClass /> */}
       <NestingComponents />
     </div>
   );

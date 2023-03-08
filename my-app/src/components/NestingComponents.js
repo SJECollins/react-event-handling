@@ -1,30 +1,38 @@
 import React, { Component } from 'react'
+import UserData from './UserData'
+import UserMessage from './UserMessage'
 
 export class NestingComponents extends Component {
     constructor(props) {
       super(props)
     
       this.state = {
-         isLoaded: false,
-         isLoggedIn: true,
+         isLoaded: true,
+         isLoggedIn: false,
       }
     }
+
+    handleSignIn = () => {
+      this.setState({
+        isLoggedIn: true,
+      })
+    }
+
+    handleSignOut = () => {
+      this.setState({
+        isLoggedIn: false,
+      })
+    }
+
   render() {
     return (
       <div>
-        <h1>{this.state.isLoaded ? "Data loaded" : "Loading"}</h1>
-        {this.state.isLoggedIn ? (
-            <div>
-                <p>Welcome to the site.</p>
-                <ol>
-                    <li>Confirm your email</li>
-                    <li>Complete your profile</li>
-                    <li>Subscribe to the newsletter</li>
-                </ol>
-            </div>
-        ) : (
-            <p>Please sign in.</p>
-        )}
+        <UserData isLoaded={this.state.isLoaded} />
+        <UserMessage 
+          isLoggedIn={this.state.isLoggedIn} 
+          handleSignIn={this.handleSignIn}
+          handleSignOut={this.handleSignOut}
+        />
       </div>
     )
   }
